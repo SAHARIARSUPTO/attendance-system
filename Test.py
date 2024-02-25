@@ -1,33 +1,35 @@
+import os
 import cv2
-import face_recognition
 
-# Open the default camera (usually the first camera)
-cap = cv2.VideoCapture(0)
+# Directory containing the images
+images_directory = 'images'
 
-while True:
-    # Read frame from the camera
-    ret, frame = cap.read()
-    if not ret:
-        print("Failed to read frame from the camera")
-        break
-    
-    # Convert the frame from BGR color (OpenCV) to RGB color (face_recognition)
-    rgb_frame = frame[:, :, ::-1]
+# Check if the directory exists
+if not os.path.exists(images_directory):
+    print(f"Error: Directory '{images_directory}' not found.")
+    exit()
 
-    # Find all face locations in the frame
-    face_locations = face_recognition.face_locations(rgb_frame)
+# List all files in the directory
+image_files = os.listdir(images_directory)
 
-    # Draw rectangles around the faces
-    for top, right, bottom, left in face_locations:
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+# Loop through each image file
+for image_file in image_files:
+    # Check if the file is an image file
+    if image_file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+        # Construct the path to the image
+        image_path = os.path.join(images_directory, image_file)
+        
+        # Load the image
+        image = cv2.imread(image_path)
+        
+        # Check if the image is loaded successfully
+        if image is not None:
+            # Display the image in a window with the filename as the window title
+            cv2.imshow(image_file, image)
+            print(f"Image '{image_file}' loaded successfully.")
+        else:
+            print(f"Error: Failed to load image '{image_file}'.")
 
-    # Display the resulting frame
-    cv2.imshow('Face Detection', frame)
-
-    # Break the loop if 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# Release the camera and close all OpenCV windows
-cap.release()
+# Wait for a key press to close the windows
+cv2.waitKey(0)
 cv2.destroyAllWindows()
