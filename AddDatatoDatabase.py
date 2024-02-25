@@ -44,7 +44,52 @@ data = {
             "standing": "G",
             "year": 2,
             "last_attendance_time": "2022-12-11 00:54:34"
-        }
+        },
+            "22331125": {
+        "name": "John Doe",
+        "major": "Mathematics",
+        "starting_year": 2023,
+        "total_attendance": 5,
+        "standing": "G",
+        "year": 1,
+        "last_attendance_time": "2022-12-11 00:54:34"
+    },
+    "223311124": {
+        "name": "Jane Smith",
+        "major": "Computer Science",
+        "starting_year": 2022,
+        "total_attendance": 8,
+        "standing": "G",
+        "year": 2,
+        "last_attendance_time": "2022-12-11 00:54:34"
+    },
+    "223311156": {
+        "name": "Alice Johnson",
+        "major": "Biology",
+        "starting_year": 2021,
+        "total_attendance": 10,
+        "standing": "G",
+        "year": 3,
+        "last_attendance_time": "2022-12-11 00:54:34"
+    },
+    "223311157": {
+        "name": "Bob Williams",
+        "major": "Chemistry",
+        "starting_year": 2020,
+        "total_attendance": 9,
+        "standing": "G",
+        "year": 4,
+        "last_attendance_time": "2022-12-11 00:54:34"
+    },
+    "223311158": {
+        "name": "Eva Martinez",
+        "major": "Psychology",
+        "starting_year": 2019,
+        "total_attendance": 6,
+        "standing": "B",
+        "year": 5,
+        "last_attendance_time": "2022-12-11 00:54:34"
+    }
 }
 
 # Save the data to local storage
