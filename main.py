@@ -9,6 +9,7 @@ from openpyxl import Workbook, load_workbook
 import shutil
 import pygame
 import time
+from attendance_post import post_attendance_to_server  # Importing the post function
 
 # Initialize pygame mixer
 pygame.mixer.init()
@@ -169,6 +170,7 @@ while True:
                 if 0 <= matchIndex < len(matches) and matches[matchIndex]:
                     match_found = True  # Set the flag to True
                     id = list(encodeDict.keys())[matchIndex]
+                  
 
                     # Take attendance for the detected student
                     current_time = time.time()
@@ -188,6 +190,9 @@ while True:
                             if success:
                                 cv2.putText(imgBackground, "Attendance Recorded", (50, 50),
                                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+                                
+                                # Post attendance data to server
+                                post_attendance_to_server(class_name, date, id)
 
                 else:
                     # Play "not recognized" sound
